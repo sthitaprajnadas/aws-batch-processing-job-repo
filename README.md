@@ -7,6 +7,8 @@ In the previous version of this blog (refer "template_ec2.yaml" the AWS Batch in
 
 **As part of this blog we will do the following.**
 
+![Alt text](images/Orchestrating%20an%20application%20process%20with%20AWS%20Batch.png?raw=true "Title")
+
 1.	Run the CloudFormation template (command provided) to create the necessary infrastructure
 
 2.	Set up the Docker image for the job
@@ -18,7 +20,7 @@ In the previous version of this blog (refer "template_ec2.yaml" the AWS Batch in
 
 4.	Notice the Job runs and performs the operation based on the pushed container image. The job parses the CSV file and adds each row into DynamoDB.
 
-![Alt text](aws-fargate-batch-application.png?raw=true "Title")
+![Alt text](images/aws-fargate-batch-application.png?raw=true "Title")  
 
 ### Design Considerations
 
