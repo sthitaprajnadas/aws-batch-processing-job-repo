@@ -176,13 +176,14 @@ Resources:
           - - Ref: AWS::AccountId
             - .dkr.ecr.
             - Ref: AWS::Region
-            - !Sub '.amazonaws.com/${StackName}-repository:latest'
+           # - !Sub '.amazonaws.com/${StackName}-repository:latest'
+            - !Sub '.amazonaws.com/${StackName}:latest'
         FargatePlatformConfiguration:
           PlatformVersion: LATEST
         ResourceRequirements:
-          - Value: 0.25
+          - Value: 1
             Type: VCPU
-          - Value: 512
+          - Value: 2048
             Type: MEMORY
         JobRoleArn:  !GetAtt 'BatchTaskExecutionRole.Arn'
         ExecutionRoleArn:  !GetAtt 'BatchTaskExecutionRole.Arn'
@@ -193,8 +194,8 @@ Resources:
             awslogs-region: !Ref AWS::Region
             awslogs-stream-prefix: !Sub ${StackName}-logs
         Command:
-        - python 
-        - batch_processor.py
+        - shell 
+        - echo "Hello World"
       PlatformCapabilities:
       - FARGATE
       Tags:
@@ -394,7 +395,7 @@ Resources:
                 - - Ref: AWS::AccountId
                   - .dkr.ecr.
                   - Ref: AWS::Region
-                  - !Sub '.amazonaws.com/${StackName}-repository:latest'
+                  - !Sub '.amazonaws.com/${StackName}:latest'
 
             - Name: AWS_DEFAULT_REGION
               Type: PLAINTEXT
